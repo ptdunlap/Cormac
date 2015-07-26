@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<enunciate label="cormac" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:noNamespaceSchemaLocation="http://enunciate.codehaus.org/schemas/enunciate-1.28.xsd">
+    <modules>
+        <!-- Docs -->
+        <docs splashPackage="org.bananaforscale.cormac.resource" title="Cormac" copyright="bananaforscale.org"/>
+    </modules>
+    
+    <services>
+        <rest defaultRestSubcontext="/rest" />
+        
+    </services>
+</enunciate>
