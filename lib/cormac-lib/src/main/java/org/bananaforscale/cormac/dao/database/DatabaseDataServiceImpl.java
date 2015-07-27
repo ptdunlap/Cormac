@@ -15,7 +15,6 @@
  */
 package org.bananaforscale.cormac.dao.database;
 
-import org.bananaforscale.cormac.dao.AbstractDataService;
 import com.mongodb.DB;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
@@ -25,6 +24,7 @@ import com.mongodb.util.JSON;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.bananaforscale.cormac.dao.AbstractDataService;
 import org.bananaforscale.cormac.exception.datasource.DatasourceException;
 import org.bananaforscale.cormac.exception.datasource.ExistsException;
 import org.bananaforscale.cormac.exception.datasource.NotFoundException;
@@ -39,7 +39,7 @@ public class DatabaseDataServiceImpl extends AbstractDataService implements Data
 
     private static final Logger logger = LoggerFactory.getLogger(DatabaseDataServiceImpl.class);
 
-    public DatabaseDataServiceImpl(MongoClient mongoClient) {
+    public DatabaseDataServiceImpl(final MongoClient mongoClient) {
         super(mongoClient);
     }
 
@@ -86,9 +86,9 @@ public class DatabaseDataServiceImpl extends AbstractDataService implements Data
     }
 
     /**
-     * Creates a new database explicitly. Because MongoDB creates a database
-     * implicitly when the database is first referenced in a command, this
-     * method is not required for usage of said database.
+     * Creates a new database explicitly. Because MongoDB creates a database implicitly when the
+     * database is first referenced in a command, this method is not required for usage of said
+     * database.
      *
      * @param databaseName the database to create
      * @return the result of the operation

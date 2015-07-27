@@ -23,27 +23,34 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ServletContextListener used for initializing Cormac configuration properties
- * and also handling the opening and closing of the Mongo connection.
- *
- * @author Paul Dunlap
+ * {@link ServletContextListener} used for initializing Cormac configuration properties and also
+ * handling the opening and closing of the MongoDB connection.
  */
 public class CormacContextServletListener implements ServletContextListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(CormacContextServletListener.class);
+    private static final Logger logger =
+            LoggerFactory.getLogger(CormacContextServletListener.class);
+
     private MongoClient mongoClient;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void contextInitialized(ServletContextEvent sce) {
+    public void contextInitialized(final ServletContextEvent sce) {
         logger.info("Initializing the Cormac Web Application");
         Configuration conf = loadConfiguration(sce);
         mongoClient = new MongoClient(conf.getMongoServer());
-        System.out.println("Starting Mongo with address: " + conf.getMongoServer());
+        logger.info("Starting Mongo with address: " + conf.getMongoServer());
+
         // TODO: add in a connection retry
         final ServletContext context = sce.getServletContext();
         context.setAttribute("mongo-client", mongoClient);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         logger.info("Shutting down the Cormac Web Application");

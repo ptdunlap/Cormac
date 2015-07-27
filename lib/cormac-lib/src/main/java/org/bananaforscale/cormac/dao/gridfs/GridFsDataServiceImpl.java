@@ -15,7 +15,6 @@
  */
 package org.bananaforscale.cormac.dao.gridfs;
 
-import org.bananaforscale.cormac.dao.AbstractDataService;
 import com.mongodb.DB;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -32,6 +31,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.tika.Tika;
+import org.bananaforscale.cormac.dao.AbstractDataService;
 import org.bananaforscale.cormac.exception.datasource.DatasourceException;
 import org.bananaforscale.cormac.exception.datasource.ExistsException;
 import org.bananaforscale.cormac.exception.datasource.NotFoundException;
@@ -39,15 +40,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Used to store and retrieve files using GridFS. This class still makes use of
- * the old mongo "DB" as it seems the new Java API hasn't switched over to using
- * "MongoDatabase".
- *
- * @author ptdunlap
+ * Used to store and retrieve files using {@link GridFS}. This class still makes use of the old
+ * {@link DB} as it seems the new Java API hasn't switched over to using {@link MongoDatabase}.
  */
 public class GridFsDataServiceImpl extends AbstractDataService implements GridFsDataService {
 
     private static final Logger logger = LoggerFactory.getLogger(GridFsDataServiceImpl.class);
+
+    private final Tika tika = new Tika();
 
     public GridFsDataServiceImpl(MongoClient mongoClient) {
         super(mongoClient);
@@ -205,8 +205,8 @@ public class GridFsDataServiceImpl extends AbstractDataService implements GridFs
     }
 
     /**
-     * Saves a file to the database by file name. This is used during a form
-     * upload. We use tika to determine the content type.
+     * Saves a file to the database by file name. This is used during a form upload. We use tika to
+     * determine the content type.
      *
      * TODO: Refactor this mess
      *
@@ -261,9 +261,8 @@ public class GridFsDataServiceImpl extends AbstractDataService implements GridFs
     }
 
     /**
-     * Saves a document to the database by file name. If the document already
-     * exists this request will be dropped and the existing file will not be
-     * overwritten.
+     * Saves a document to the database by file name. If the document already exists this request
+     * will be dropped and the existing file will not be overwritten.
      *
      * @param databaseName the database
      * @param bucketName the bucket
@@ -297,8 +296,8 @@ public class GridFsDataServiceImpl extends AbstractDataService implements GridFs
     }
 
     /**
-     * Updates a file in the database. If the file exists in the database it
-     * will be updated. If the file doesn't exist it will be created.
+     * Updates a file in the database. If the file exists in the database it will be updated. If the
+     * file doesn't exist it will be created.
      *
      * @param databaseName the database
      * @param bucketName the bucket
@@ -362,12 +361,7 @@ public class GridFsDataServiceImpl extends AbstractDataService implements GridFs
             }
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             gfsFile.writeTo(baos);
-            // Response.ResponseBuilder builder = Response.ok(baos.toByteArray(), gfsFile.getContentType());
-            // Content Disposition attachment prompts the save dialog box.
-            // builder.header("Content-Disposition", "attachment;filename=" + fileName);
-            // Content Disposition inline will try to open the file in the browser.
-            // builder.header("Content-Disposition", "inline;filename=" + fileName);
-            // return builder.build();
+
             return new FileEnvelope(baos.toByteArray(), gfsFile.getContentType(), fileName);
         } catch (MongoException ex) {
             logger.error("An error occured while retrieving the file", ex);

@@ -18,26 +18,21 @@ package org.bananaforscale.cormac.dao;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import org.apache.tika.Tika;
 
 /**
- * Base class for the any DAO which wishes to use the {@link MongoClient}
+ * Base class for any DAO needing to use {@link MongoClient}.
  */
 public abstract class AbstractDataService {
 
     protected final MongoClient mongoClient;
-    protected final Tika tika;
 
     /**
      * @param mongoClient the {@link MongoClient} to use for communicating with MongoDB
      */
     public AbstractDataService(final MongoClient mongoClient) {
         this.mongoClient = mongoClient;
-        tika = new Tika();
     }
 
     /**
@@ -94,35 +89,34 @@ public abstract class AbstractDataService {
     }
 
     /**
-     * Builds a list of collection names omitting buckets, indexes, and users.
+     * Builds a {@link Set} of collection names omitting buckets, indices, and users.
      *
-     * @param collectionSet
-     * @return a list of collection names
+     * @param collectionSet the {@link Set} of collection names to filter down
+     * @return the filtered {@link Set} of collection names
      */
-    protected List<String> getCollectionNames(Set<String> collectionSet) {
-        List<String> collectionList = new ArrayList<>();
-        for (String collection : collectionSet) {
-            if (!collection.endsWith(".files")
-                    && !collection.endsWith(".chunks")
-                    && !collection.endsWith(".indexes")
-                    && !collection.equals("users")) {
-                collectionList.add(collection);
+    protected Set<String> getCollectionNames(final Set<String> collectionSet) {
+        final Set<String> collectionNames = new HashSet<>();
+        for (final String collection : collectionSet) {
+            if (!collection.endsWith(".files") && !collection.endsWith(".chunks")
+                    && !collection.endsWith(".indexes") && !collection.equals("users")) {
+                collectionNames.add(collection);
             }
         }
-        return collectionList;
+        return collectionNames;
     }
 
     /**
-     * Produces a list of the GridFS buckets.
+     * Builds a {@link Set} of the {@link GridFS} buckets.
      *
-     * @param collectionSet
-     * @return a set of bucket names
+     * @param collectionSet a {@link Set} of collection names
+     * @return a {@link Set} of bucket names
      */
-    protected Set<String> getBucketNames(Set<String> collectionSet) {
-        Set<String> bucketList = new HashSet<>();
-        for (String collName : collectionSet) {
+    protected Set<String> getBucketNames(final Set<String> collectionSet) {
+        final Set<String> bucketList = new HashSet<>();
+        for (final String collName : collectionSet) {
             if (collName.endsWith(".chunks")) {
-                String potentialBucketName = collName.substring(0, collName.indexOf(".chunks"));
+                final String potentialBucketName =
+                        collName.substring(0, collName.indexOf(".chunks"));
                 if (collectionSet.contains(potentialBucketName + ".files")) {
                     bucketList.add(potentialBucketName);
                 }
@@ -132,14 +126,15 @@ public abstract class AbstractDataService {
     }
 
     /**
-     * Determines if a bucket exists with the specified name.
+     * Determines whether a bucket with the specified name exists.
      *
-     * @param databaseName
-     * @param bucketName
-     * @return whether the bucket exists
+     * @param databaseName name of the database to search
+     * @param bucketName name of the bucket to check for
+     * @return {@code true} if the bucket exists, otherwise {@code false}
      */
-    protected boolean bucketExists(String databaseName, String bucketName) {
-        Set<String> bucketSet = getBucketNames(getCollectionNames(databaseName));
+    protected boolean bucketExists(final String databaseName, final String bucketName) {
+        final Set<String> bucketSet = getBucketNames(getCollectionNames(databaseName));
         return bucketSet.contains(bucketName);
     }
+
 }

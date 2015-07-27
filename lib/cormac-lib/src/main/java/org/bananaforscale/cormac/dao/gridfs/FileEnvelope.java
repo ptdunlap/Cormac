@@ -16,17 +16,15 @@
 package org.bananaforscale.cormac.dao.gridfs;
 
 /**
- * Encapsulates the file byte array, content type, and name
- *
- * @author ptdunlap
+ * Encapsulates the file byte array, content type, and name.
  */
 public class FileEnvelope {
 
-    final byte[] bytes;
-    final String contentType;
-    final String name;
+    private final byte[] bytes;
+    private final String contentType;
+    private final String name;
 
-    public FileEnvelope(byte[] bytes, String contentType, String name) {
+    public FileEnvelope(final byte[] bytes, final String contentType, final String name) {
         this.bytes = bytes;
         this.contentType = contentType;
         this.name = name;
