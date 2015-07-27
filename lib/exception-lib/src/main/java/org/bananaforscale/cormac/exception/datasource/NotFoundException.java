@@ -16,30 +16,29 @@
 package org.bananaforscale.cormac.exception.datasource;
 
 /**
- * An exception to handle when an item is not found in a data source
- *
- * @author ptdunlap
+ * An {@link Exception} for when an item is not found in a data source
  */
 public class NotFoundException extends Exception {
 
-    private String message = "The document does not exist in the datasource";
+    /**
+     * Message used to build the {@link NotFoundException} when no other message is specified.
+     */
+    static final String DEFAULT_MESSAGE = "The document does not exist in the datasource.";
 
+    /**
+     * Initializes the {@link NotFoundException} with a default message.
+     */
     public NotFoundException() {
-        super();
+        super(DEFAULT_MESSAGE);
     }
 
-    public NotFoundException(String message) {
+    /**
+     * Initializes the {@link NotFoundException} with the specified message.
+     *
+     * @param message the message
+     */
+    public NotFoundException(final String message) {
         super(message);
-        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

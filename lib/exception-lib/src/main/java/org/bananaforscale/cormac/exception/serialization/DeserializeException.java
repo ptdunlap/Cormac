@@ -16,30 +16,29 @@
 package org.bananaforscale.cormac.exception.serialization;
 
 /**
- * An exception to handle when there is a deserialization error
- *
- * @author ptdunlap
+ * An {@link Exception} for deserialization errors.
  */
 public class DeserializeException extends Exception {
 
-    private String message = "The object could not be deserialized";
+    /**
+     * Message used to build the {@link DeserializeException} when no other message is specified.
+     */
+    static final String DEFAULT_MESSAGE = "The object could not be deserialized.";
 
+    /**
+     * Initializes the {@link DeserializeException} with a default message.
+     */
     public DeserializeException() {
-        super();
+        super(DEFAULT_MESSAGE);
     }
 
-    public DeserializeException(String message) {
+    /**
+     * Initializes the {@link DeserializeException} with the specified message.
+     *
+     * @param message the message
+     */
+    public DeserializeException(final String message) {
         super(message);
-        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

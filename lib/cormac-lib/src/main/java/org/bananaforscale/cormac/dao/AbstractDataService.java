@@ -25,28 +25,29 @@ import java.util.Set;
 import org.apache.tika.Tika;
 
 /**
- * Base class for the any DAO which wishes to use the {@code MongoClient}
- *
- * @author ptdunlap
+ * Base class for the any DAO which wishes to use the {@link MongoClient}
  */
 public abstract class AbstractDataService {
 
     protected final MongoClient mongoClient;
     protected final Tika tika;
 
-    public AbstractDataService(MongoClient mongoClient) {
+    /**
+     * @param mongoClient the {@link MongoClient} to use for communicating with MongoDB
+     */
+    public AbstractDataService(final MongoClient mongoClient) {
         this.mongoClient = mongoClient;
         tika = new Tika();
     }
 
     /**
-     * Returns all unique database names in a Mongo data source.
+     * Returns all unique database names in a MongoDB data source.
      *
-     * @return a list of database names
+     * @return a {@link Set} of database names
      */
     protected Set<String> getDatabaseNames() {
-        Set<String> dbSet = new HashSet<>();
-        MongoCursor<String> cursor = mongoClient.listDatabaseNames().iterator();
+        final Set<String> dbSet = new HashSet<>();
+        final MongoCursor<String> cursor = mongoClient.listDatabaseNames().iterator();
         while (cursor.hasNext()) {
             dbSet.add(cursor.next());
         }
@@ -54,26 +55,26 @@ public abstract class AbstractDataService {
     }
 
     /**
-     * Determines if a database exists with the specified name.
+     * Determines whether a database exists with the specified name.
      *
-     * @param databaseName
-     * @return whether the database exists
+     * @param databaseName the name of the database to check for
+     * @return {@code true} if the database exists, otherwise {@code false}
      */
-    protected boolean databaseExists(String databaseName) {
-        Set<String> dbSet = getDatabaseNames();
+    protected boolean databaseExists(final String databaseName) {
+        final Set<String> dbSet = getDatabaseNames();
         return dbSet.contains(databaseName);
     }
 
     /**
-     * Retrieves the name of the collections in a database.
+     * Retrieves the names of the collections in a database.
      *
-     * @param databaseName
-     * @return a set of collection names
+     * @param databaseName the name of the database
+     * @return a {@link Set} of collection names
      */
-    protected Set<String> getCollectionNames(String databaseName) {
-        MongoDatabase mongoDatabase = mongoClient.getDatabase(databaseName);
-        Set<String> collectionSet = new HashSet<>();
-        MongoCursor<String> cursor = mongoDatabase.listCollectionNames().iterator();
+    protected Set<String> getCollectionNames(final String databaseName) {
+        final MongoDatabase mongoDatabase = mongoClient.getDatabase(databaseName);
+        final Set<String> collectionSet = new HashSet<>();
+        final MongoCursor<String> cursor = mongoDatabase.listCollectionNames().iterator();
         while (cursor.hasNext()) {
             collectionSet.add(cursor.next());
         }
@@ -81,19 +82,19 @@ public abstract class AbstractDataService {
     }
 
     /**
-     * Determines if a collection exists with the specified name.
+     * Determines whether a collection with the specified name exists within a database.
      *
-     * @param databaseName
-     * @param collectionName
-     * @return whether the collection exists
+     * @param databaseName the name of the database
+     * @param collectionName the name of the collection to check for
+     * @return {@code true} if the collection exists in the database, otherwise {@code false}
      */
-    protected boolean collectionExists(String databaseName, String collectionName) {
-        Set<String> collectionSet = getCollectionNames(databaseName);
+    protected boolean collectionExists(final String databaseName, final String collectionName) {
+        final Set<String> collectionSet = getCollectionNames(databaseName);
         return collectionSet.contains(collectionName);
     }
 
     /**
-     * Produces a list of collection names omitting buckets, indexes, and users.
+     * Builds a list of collection names omitting buckets, indexes, and users.
      *
      * @param collectionSet
      * @return a list of collection names

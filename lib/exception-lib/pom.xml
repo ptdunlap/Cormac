@@ -5,12 +5,25 @@
         <groupId>org.bananaforscale.cormac</groupId>
         <artifactId>lib</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.bananaforscale.cormac.lib</groupId>
     <artifactId>exception-lib</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
     <name>Cormac Project - Library - Exceptions</name>
-    <url>https://github.com/ptdunlap/bananaforscale</url>
+
+    <dependencies>
+
+        <!-- Cormac -->
+
+        <!-- 3rd party dependencies -->
+
+        <!-- 3rd party test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
 </project>

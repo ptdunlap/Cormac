@@ -5,26 +5,21 @@
         <groupId>org.bananaforscale.cormac</groupId>
         <artifactId>service</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.bananaforscale.cormac.service</groupId>
     <artifactId>cormac-webapp</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
     <name>Cormac Project - Service - Cormac Web Application</name>
-    <url>https://github.com/ptdunlap/bananaforscale</url>
 
     <dependencies>
+
+        <!-- Cormac -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <scope>provided</scope>
+            <groupId>org.bananaforscale.cormac.lib</groupId>
+            <artifactId>cormac-lib</artifactId>
         </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
+        <!-- 3rd party dependencies -->
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>el-api</artifactId>
@@ -36,9 +31,14 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jaxrs</artifactId>
-            <scope>compile</scope>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
@@ -47,14 +47,12 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-multipart-provider</artifactId>
+            <artifactId>resteasy-jaxrs</artifactId>
             <scope>compile</scope>
         </dependency>
-        
-        <!-- CORMAC DEPENDENCIES -->
         <dependency>
-            <groupId>org.bananaforscale.cormac.lib</groupId>
-            <artifactId>cormac-lib</artifactId>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -66,6 +64,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <scope>compile</scope>
         </dependency>
+        
     </dependencies>
     <build>
         <plugins>

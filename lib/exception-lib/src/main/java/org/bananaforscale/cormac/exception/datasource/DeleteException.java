@@ -16,30 +16,29 @@
 package org.bananaforscale.cormac.exception.datasource;
 
 /**
- * An exception to handle when there is a delete error in a data source
- *
- * @author ptdunlap
+ * An {@link Exception} for when there is a deletion error in a data source.
  */
 public class DeleteException extends Exception {
 
-    private String message = "The record could not be deleted from the datasource";
+    /**
+     * Message used to build the {@link DeleteException} when no other message is specified.
+     */
+    static final String DEFAULT_MESSAGE = "The record could not be deleted from the datasource.";
 
+    /**
+     * Initializes the {@link DeleteException} with a default message.
+     */
     public DeleteException() {
-        super();
+        super(DEFAULT_MESSAGE);
     }
 
-    public DeleteException(String message) {
+    /**
+     * Initializes the {@link DeleteException} with the specified message.
+     *
+     * @param message the message
+     */
+    public DeleteException(final String message) {
         super(message);
-        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

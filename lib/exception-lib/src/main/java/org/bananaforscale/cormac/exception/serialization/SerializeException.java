@@ -16,30 +16,29 @@
 package org.bananaforscale.cormac.exception.serialization;
 
 /**
- * An exception to handle when there is a serialization error
- *
- * @author ptdunlap
+ * An {@link Exception} for serialization errors.
  */
 public class SerializeException extends Exception {
 
-    private String message = "The object could not be serialized";
+    /**
+     * Message used to build the {@link SerializeException} when no other message is specified.
+     */
+    static final String DEFAULT_MESSAGE = "The object could not be serialized.";
 
+    /**
+     * Initializes the {@link SerializeException} with a default message.
+     */
     public SerializeException() {
-        super();
+        super(DEFAULT_MESSAGE);
     }
 
-    public SerializeException(String message) {
+    /**
+     * Initializes the {@link SerializeException} with the specified message.
+     *
+     * @param message the message
+     */
+    public SerializeException(final String message) {
         super(message);
-        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

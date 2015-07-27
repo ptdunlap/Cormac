@@ -16,30 +16,29 @@
 package org.bananaforscale.cormac.exception.datasource;
 
 /**
- * An exception to handle when there is a create error in a data source
- *
- * @author ptdunlap
+ * An {@link Exception} for when there is a creation error in a data source.
  */
 public class CreateException extends Exception {
 
-    private String message = "The record could not be created in the datasource";
+    /**
+     * Message used to build the {@link CreateException} when no other message is specified.
+     */
+    static final String DEFAULT_MESSAGE = "The record could not be created in the datasource.";
 
+    /**
+     * Initializes the {@link CreateException} with a default message.
+     */
     public CreateException() {
-        super();
+        super(DEFAULT_MESSAGE);
     }
 
-    public CreateException(String message) {
+    /**
+     * Initializes the {@link CreateException} with the specified message.
+     *
+     * @param message the message
+     */
+    public CreateException(final String message) {
         super(message);
-        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

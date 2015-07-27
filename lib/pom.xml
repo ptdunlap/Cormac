@@ -5,15 +5,12 @@
         <groupId>org.bananaforscale.cormac</groupId>
         <artifactId>cormac-parent-pom</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.bananaforscale.cormac</groupId>
     <artifactId>lib</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Cormac Project - Libraries Parent Project</name>
-    <url>https://github.com/ptdunlap/bananaforscale</url>
-    
+
     <modules>
         <module>exception-lib</module>
         <module>cormac-lib</module>

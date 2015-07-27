@@ -6,47 +6,45 @@
     <name>Cormac Multi-Module Project</name>
     <version>1.0-SNAPSHOT</version>
     <description>Parent pom for multi-module project Cormac</description>
-    
+
     <url>https://github.com/ptdunlap/cormac</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <resteasy.version>3.0.11.Final</resteasy.version>
         <slf4j.version>1.7.12</slf4j.version>
         <enunciate.version>1.30.1</enunciate.version>
-        <cormac.version>1.0-SNAPSHOT</cormac.version>
     </properties>
-    
+
     <modules>
         <module>lib</module>
         <module>service</module>
     </modules>
-    
+
     <dependencyManagement>
         <dependencies>
             <!--Cormac-->
             <dependency>
                 <groupId>org.bananaforscale.cormac.lib</groupId>
                 <artifactId>cormac-lib</artifactId>
-                <version>${cormac.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.bananaforscale.cormac.lib</groupId>
                 <artifactId>exception-lib</artifactId>
-                <version>${cormac.version}</version>
+                <version>${project.version}</version>
             </dependency>
-            
-            <!--3rd Party--> 
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.5</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet.jsp</groupId>
-                <artifactId>jsp-api</artifactId>
-                <version>2.2</version>
-            </dependency>
+
+            <!--3rd Party-->
             <dependency>
                 <groupId>javax.el</groupId>
                 <artifactId>el-api</artifactId>
@@ -58,9 +56,24 @@
                 <version>1.2</version>
             </dependency>
             <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jaxrs</artifactId>
-                <version>${resteasy.version}</version>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tika</groupId>
+                <artifactId>tika-core</artifactId>
+                <version>1.9</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>
@@ -74,8 +87,18 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxrs</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
                 <artifactId>resteasy-multipart-provider</artifactId>
                 <version>${resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>3.0.3</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -87,19 +110,9 @@
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.mongodb</groupId>
-                <artifactId>mongo-java-driver</artifactId>
-                <version>3.0.3</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.tika</groupId>
-                <artifactId>tika-core</artifactId>
-                <version>1.9</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <build>
         <pluginManagement>
             <plugins>
@@ -128,16 +141,42 @@
         </plugins>
     </build>
 
-<!--
-    <repositories>
-        <repository>
-            <id>Jboss Repository</id>
-            <url>http://repository.jboss.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>Codehaus Repository</id>
-            <url>http://repository.codehaus.org</url>
-        </repository>
-    </repositories>
--->    
+    <!--
+        <repositories>
+            <repository>
+                <id>Jboss Repository</id>
+                <url>http://repository.jboss.org/maven2/</url>
+            </repository>
+            <repository>
+                <id>Codehaus Repository</id>
+                <url>http://repository.codehaus.org</url>
+            </repository>
+        </repositories>
+    -->
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>elca-services</id>
+            <url>http://el4.elca-services.ch/el4j/maven2repository</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
 </project>

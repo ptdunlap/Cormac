@@ -16,30 +16,30 @@
 package org.bananaforscale.cormac.exception.datasource;
 
 /**
- * An exception to handle an error with a data source
- *
- * @author ptdunlap
+ * An {@link Exception} for data source errors.
  */
 public class DatasourceException extends Exception {
 
-    private String message = "An error occurred while interacting with the datasource";
+    /**
+     * Message used to build the {@link DatasourceException} when no other message is specified.
+     */
+    static final String DEFAULT_MESSAGE =
+            "An error occurred while interacting with the datasource.";
 
+    /**
+     * Initializes the {@link DatasourceException} with a default message.
+     */
     public DatasourceException() {
-        super();
+        super(DEFAULT_MESSAGE);
     }
 
-    public DatasourceException(String message) {
+    /**
+     * Initializes the {@link DatasourceException} with the specified message.
+     *
+     * @param message the message
+     */
+    public DatasourceException(final String message) {
         super(message);
-        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

@@ -16,30 +16,29 @@
 package org.bananaforscale.cormac.exception.datasource;
 
 /**
- * An exception to handle when there is an update error in a data source
- *
- * @author ptdunlap
+ * An {@link Exception} for when there is an update error in a data source.
  */
 public class UpdateException extends Exception {
 
-    private String message = "The record could not be read from the datasource";
+    /**
+     * Message used to build the {@link UpdateException} when no other message is specified.
+     */
+    static final String DEFAULT_MESSAGE = "The record could not be read from the datasource.";
 
+    /**
+     * Initializes the {@link UpdateException} with a default message.
+     */
     public UpdateException() {
-        super();
+        super(DEFAULT_MESSAGE);
     }
 
-    public UpdateException(String message) {
+    /**
+     * Initializes the {@link UpdateException} with the specified message.
+     *
+     * @param message the message
+     */
+    public UpdateException(final String message) {
         super(message);
-        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

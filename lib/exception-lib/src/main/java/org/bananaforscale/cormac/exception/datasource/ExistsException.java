@@ -16,30 +16,29 @@
 package org.bananaforscale.cormac.exception.datasource;
 
 /**
- * An exception to handle when something already exists in a data source
- *
- * @author ptdunlap
+ * An {@link Exception} for when something already exists in a data source.
  */
 public class ExistsException extends Exception {
 
-    private String message = "The record already exists in the datasource";
+    /**
+     * Message used to build the {@link ExistsException} when no other message is specified.
+     */
+    static final String DEFAULT_MESSAGE = "The record already exists in the datasource.";
 
+    /**
+     * Initializes the {@link ExistsException} with a default message.
+     */
     public ExistsException() {
-        super();
+        super(DEFAULT_MESSAGE);
     }
 
-    public ExistsException(String message) {
+    /**
+     * Initializes the {@link ExistsException} with the specified message.
+     *
+     * @param message the message
+     */
+    public ExistsException(final String message) {
         super(message);
-        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }
