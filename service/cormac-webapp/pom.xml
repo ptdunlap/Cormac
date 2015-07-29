@@ -15,8 +15,8 @@
 
         <!-- Cormac -->
         <dependency>
-            <groupId>org.bananaforscale.cormac.lib</groupId>
-            <artifactId>core</artifactId>
+            <groupId>org.bananaforscale.cormac</groupId>
+            <artifactId>cormac-core</artifactId>
         </dependency>
 
         <!-- 3rd party dependencies -->
@@ -64,7 +64,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <scope>compile</scope>
         </dependency>
-        
+
     </dependencies>
     <build>
         <plugins>

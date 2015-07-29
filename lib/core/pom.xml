@@ -7,10 +7,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.bananaforscale.cormac.lib</groupId>
-    <artifactId>core</artifactId>
+    <groupId>org.bananaforscale.cormac</groupId>
+    <artifactId>cormac-core</artifactId>
     <packaging>jar</packaging>
-    <name>Cormac Project - Library - Cormac</name>
+    <name>Cormac Project - Core</name>
 
     <dependencies>
 
@@ -35,7 +35,7 @@
         </dependency>
 
         <!-- 3rd party test dependencies -->
-        
+
     </dependencies>
 
 </project>
