@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.bananaforscale.cormac</groupId>
-        <artifactId>service</artifactId>
+        <artifactId>cormac-parent-pom</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.bananaforscale.cormac.service</groupId>
+    <groupId>org.bananaforscale.cormac</groupId>
     <artifactId>cormac-webapp</artifactId>
     <packaging>war</packaging>
     <name>Cormac Project - Service - Cormac Web Application</name>

@@ -27,7 +27,7 @@
 
     <modules>
         <module>core</module>
-        <module>service</module>
+        <module>webapp</module>
     </modules>
 
     <dependencyManagement>
