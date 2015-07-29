@@ -13,6 +13,6 @@
 
     <modules>
         <module>exception-lib</module>
-        <module>cormac-lib</module>
+        <module>core</module>
     </modules>
 </project>

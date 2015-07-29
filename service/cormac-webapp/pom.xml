@@ -16,7 +16,7 @@
         <!-- Cormac -->
         <dependency>
             <groupId>org.bananaforscale.cormac.lib</groupId>
-            <artifactId>cormac-lib</artifactId>
+            <artifactId>core</artifactId>
         </dependency>
 
         <!-- 3rd party dependencies -->

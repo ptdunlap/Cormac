@@ -8,7 +8,7 @@
     </parent>
 
     <groupId>org.bananaforscale.cormac.lib</groupId>
-    <artifactId>cormac-lib</artifactId>
+    <artifactId>core</artifactId>
     <packaging>jar</packaging>
     <name>Cormac Project - Library - Cormac</name>
 
