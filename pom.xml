@@ -38,11 +38,6 @@
                 <artifactId>cormac-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.bananaforscale.cormac.lib</groupId>
-                <artifactId>exception-lib</artifactId>
-                <version>${project.version}</version>
-            </dependency>
 
             <!--3rd Party-->
             <dependency>

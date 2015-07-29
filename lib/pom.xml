@@ -12,7 +12,6 @@
     <name>Cormac Project - Libraries Parent Project</name>
 
     <modules>
-        <module>exception-lib</module>
         <module>core</module>
     </modules>
 </project>

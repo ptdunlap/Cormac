@@ -15,10 +15,6 @@
     <dependencies>
 
         <!-- Cormac -->
-        <dependency>
-            <groupId>org.bananaforscale.cormac.lib</groupId>
-            <artifactId>exception-lib</artifactId>
-        </dependency>
 
         <!-- 3rd party dependencies -->
         <dependency>
