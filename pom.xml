@@ -26,7 +26,7 @@
     </properties>
 
     <modules>
-        <module>lib</module>
+        <module>core</module>
         <module>service</module>
     </modules>
 
